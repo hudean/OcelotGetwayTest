@@ -1,0 +1,22 @@
+{
+
+  //DownstreamPathTemplate表示微服务中实际端点的路由。
+  //DownstreamScheme是 Microservice 的 scheme，这里是 HTTPS
+  //DownstreamHostAndPorts定义了 Microservice 的位置。我们将在此处添加主机和端口号。
+  //UpstreamPathTemplate是客户端请求 Ocelot API 网关的路径。
+  //UpstreamHttpMethod是 API 网关支持的 HTTP 方法。基于 Incoming Method，Ocelot 也会向微服务发送类似的 HTTP 方法请求。
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/product",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44337
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/product",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET" ]
+    }
+  ]
+}
